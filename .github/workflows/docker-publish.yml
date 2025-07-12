@@ -41,4 +41,4 @@ jobs:
         with:
           context: ./${{ matrix.images }}
           push: true
-          tags: cyberbarrista/python-with-poetry:${{ matrix.service }}_${{ steps.get_version.outputs.version }}
+          tags: cyberbarrista/python-with-poetry:${{ matrix.images }}_${{ steps.get_version.outputs.version }}
