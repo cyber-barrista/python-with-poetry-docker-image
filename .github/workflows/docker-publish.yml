@@ -40,5 +40,6 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
           context: ./${{ matrix.images }}
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: cyberbarrista/python-with-poetry:${{ matrix.images }}_${{ steps.get_version.outputs.version }}
