@@ -1,8 +1,9 @@
+# syntax=docker/dockerfile:experimental
 FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev curl
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN --security=insecure curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sed 's#/proc/self/exe#$SHELL#g' | sh -s -- -y --profile minimal --default-toolchain nightly
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN rustup toolchain install nightly
